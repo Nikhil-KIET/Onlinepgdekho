@@ -2,12 +2,12 @@ import { Link } from "react-router-dom";
 
 export default function Navbar(){
     return (
-        <div className=" flex justify-evenly items-center bg-white-100 border-b-2  shadow-md p-2  bg-white sticky  ">
+        <div className=" flex md:justify-evenly  md:items-center bg-white-100 border-b-2  shadow-md p-2  bg-white sticky  ">
 
 
             <img className="   " src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgdqfjNaZtfLe3jMPEucFREmpVeSzYZa8Mlg&s" alt="" height={20} width={100}  />
 
-            <div className=" flex space-x-8    ">
+            <div className=" flex space-x-8     ">
                 <Link className="  px-4 py-1 rounded-md text-lg hover:text-white transition duration-500 hover:bg-blue-300     " >
                 <p>Rent</p>
                 </Link>

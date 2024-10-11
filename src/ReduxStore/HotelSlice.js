@@ -1,9 +1,11 @@
 import { data } from "../hotel";
 import { createSlice } from "@reduxjs/toolkit";
+import { kiet } from "../kiet";
 
 const initialState = {
     hotels: data,
-    fav:[]
+    fav:[],
+    type:'all'
 };
 
  export const HotelContext=createSlice(
@@ -32,9 +34,22 @@ const initialState = {
                 let val=action.payload
                 console.log(val);
                 if(val.city!=="all"){
-                    state.hotels=data.filter( h=>h.state.toLowerCase()===val.city.toLowerCase()  )
+                    if(state.type=="all"){
+
+                    
+                        state.hotels=data.filter( h=>h.state.toLowerCase()===val.city.toLowerCase()  )}else{
+                            state.hotels=kiet.filter( h=>h.state.toLowerCase()===val.city.toLowerCase()  )
+                        }
+
+                    
                 }else{
-                    state.hotels=data
+                    if(state.type=="all"){
+
+                    
+                    state.hotels=data}else{
+                        state.hotels=kiet
+                    }
+
 
                 }
                 console.log("city->->->-.",JSON.stringify(state.hotels))
@@ -50,7 +65,20 @@ const initialState = {
             
 
 
+            },
+            witch:(state,action)=>{
+                if(action.payload==='all'){
+                    state.hotels=data;
+                    state.type="all"
+                    
+                }else{
+                    state.hotels=kiet;
+                    state.type="kiet"
+
+                }
+                return state;
             }
+
 
             
 
@@ -60,6 +88,6 @@ const initialState = {
 
 
  );
- export const { fav,search } = HotelContext.actions;
+ export const { fav,search,witch} = HotelContext.actions;
 export default HotelContext.reducer;
 
